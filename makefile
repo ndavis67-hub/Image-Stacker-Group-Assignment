@@ -1,15 +1,15 @@
-
+RM = rm -f 
 CC = g++
 CFLAGS = -g -Wall -Wextra
 
 default: imagestacker
 
 
-imagestacker:   stacker.o main.o
-        $(CC) $(CFlags) -o imagestacker stacker.o main.o
+imagestacker: stacker.o main.o
+        $(CC) $(CFLAGS) -o imagestacker stacker.o main.o
 
 
-stacker.o: stacker.o stacker.cpp stacker.h
+stacker.o: stacker.cpp stacker.h
         $(CC) $(CFLAGS) -c stacker.cpp
 
 
