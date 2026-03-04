@@ -1,0 +1,9 @@
+this is where we talk about how the code works so if you were to run git pull and such from the lab machines or utm computers you could run make stacker 
+
+make imagestacker | for precompile or linking of files then run
+./imagestacker | to run the program 
+ make clean  | to clear out old files run
+
+ next good question is how are we going to impliment 1 the files the 2 the processing and how that will work into the class system realtive of stacker.h 
+
+ 
