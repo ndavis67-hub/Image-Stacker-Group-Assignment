@@ -1,27 +1,81 @@
 #ifndef STACKER_H
 #define STACKER_H
-#include <iostream>
 #include <vector>
 #include <string>
-using namespace std;
 
 class Stacker {
+public:
+    /**
+     * @brief Construct a new Stacker object
+     * 
+     */
+    Stacker();
 
+    /**
+     * @brief 
+     * 
+     * @param name 
+     * @param numImages 
+     * @return true
+     * @return false 
+     * We want to know whether all the images were read correctly
+     */
+    bool stackerImages(std::string name, int count);
+
+    /**
+     * @brief 
+     * 
+     * @param name 
+     * @return true 
+     * @return false 
+     */
+    bool output(std::string name) const;
+    
 private:
-    string magic_number;
+    /**
+     * @brief 
+     * 
+     */
+    std::string magic_number;
 
+    /**
+     * @brief 
+     * 
+     */
     int width, height, max_color;
 
+    /**
+     * @brief 
+     * 
+     */
     struct pixel{
         int red, green, blue;
     };
 
-    vector<int> pixel;
+    /**
+     * @brief 
+     * 
+     */
+    std::vector<pixel> p;
 
-public:
-    Stacker();
-    
+    /**
+     * @brief 
+     * 
+     * @param filename 
+     * @param index 
+     * @return string 
+     */
+    std::string buildFilename(std::string filename, int index);
 
+    /**
+     * @brief 
+     * 
+     * @param filename 
+     * @param isImage 
+     * @return true 
+     * @return false 
+     */
+    bool ppmFile(std::string filename, bool isImage);
 
 };
 #endif
