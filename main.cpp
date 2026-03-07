@@ -20,7 +20,7 @@ cin>>filename;
 while(count < 10){
   
   int pnum =0;
-  fstream file(filename + "00"+ to_string(count) +".ppm");
+  fstream file(filename + "_00"+ to_string(count) +".ppm");
 // dont forget 
   string garbage;
   getline(file, garbage);
@@ -34,6 +34,10 @@ while(count < 10){
       vector1.push_back({f, o, u });
     }
     else {
+      if(pnum>=vector1.size()){
+        cout<<"warning pixel inconistent"<<pnum;
+        return 1;
+      }
       vector1[pnum][0] +=f;
       vector1[pnum][1] +=o;
       vector1[pnum][2] +=u;
@@ -55,9 +59,8 @@ while(count < 10){
 }
 //print it 
 fstream file;
-count++;
 //right here we need to export the vector into a new file 
-file.open(filename + "00"+ to_string(count) +".ppm");
+file.open(filename + "Finial" +".ppm");
  file<<"P3\n";
  file<<"591 600\n";
  file<<"255\n";
