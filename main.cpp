@@ -12,7 +12,7 @@ int main() {
   int u =0;
   int count =0;
   
- vector<vector<vector<int>>> vector1 ;
+ vector<vector<int>> vector1 ;
 //l pixel number 
 cout<<"enter file name"<<endl;
 string filename ="";
@@ -20,7 +20,7 @@ cin>>filename;
 while(count < 10){
   
   int pnum =0;
-  fstream file(filename + "00"+ count +".ppm");
+  fstream file(filename + "00"+ to_string(count) +".ppm");
 // dont forget 
   string garbage;
   getline(file, garbage);
@@ -31,7 +31,7 @@ while(count < 10){
 //run something to remove the first 1 ,2 ,3 line of file input ie P3 591 600 255
   while(file>>f>>o>>u){
     if(count == 0){
-      vector1.push_back({{f, o, u }});
+      vector1.push_back({f, o, u });
     }
     else {
       vector1[pnum][0] +=f;
@@ -46,15 +46,26 @@ while(count < 10){
  file.close();
     count++;
 //end of loop
-for(int a = 0; a< vector1.size() a++){
- vector1 =[a][0] /=10;
- vector1 =[a][1] /=10;
- vector1 =[a][2] /=10;
+}
+ for(int a = 0; a< vector1.size(); a++){
+ vector1[a][0] /=10;
+ vector1[a][1] /=10;
+ vector1[a][2] /=10;
  
 }
- 
+//print it 
+fstream file;
+count++;
+//right here we need to export the vector into a new file 
+file.open(filename + "00"+ to_string(count) +".ppm");
+ file<<"P3\n";
+ file<<"591 600\n";
+ file<<"255\n";
 
+for(int b =0; b<vector1.size(); b++){
+  file<<vector1[b][0]<<" "<<vector1[b][1]<<" "<<vector1[b][2]<<"\n";
 
+}
+file.close();
     return 0;
   }
-}
