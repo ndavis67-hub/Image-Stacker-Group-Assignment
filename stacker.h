@@ -21,15 +21,16 @@ public:
      * We want to know whether all the images were read correctly
      */
     bool stackerImages(std::string name, int count);
-
     /**
      * @brief 
      * 
-     * @param name 
-     * @return true 
-     * @return false 
+     * @param filename 
+     * @param index 
+     * @return std::string 
      */
-    bool output(std::string name) const;
+    std::string buildFilename(std::string filename, int count);
+
+    bool writeOutput(std::string filename);
     
 private:
     /**
@@ -57,25 +58,6 @@ private:
      * 
      */
     std::vector<pixel> p;
-
-    /**
-     * @brief 
-     * 
-     * @param filename 
-     * @param index 
-     * @return string 
-     */
-    std::string buildFilename(std::string filename, int index);
-
-    /**
-     * @brief 
-     * 
-     * @param filename 
-     * @param isImage 
-     * @return true 
-     * @return false 
-     */
-    bool ppmFile(std::string filename, bool isImage);
 
 };
 #endif
