@@ -55,7 +55,7 @@ while(count <= 10){
 }
  file.close();
     count++;
-    
+    cout << "Processed file " << count << endl;
 
 //end of loop
 }
@@ -66,7 +66,8 @@ while(count <= 10){
  
 }
 //print it 
-fstream file;
+cout<<"devision done";
+ofstream file;
 //right here we need to export the vector into a new file 
 file.open(filename + "Finial" +".ppm");
  file<<"P3\n";
@@ -77,6 +78,7 @@ for(int b =0; b<vector1.size(); b++){
   file<<vector1[b][0]<<" "<<vector1[b][1]<<" "<<vector1[b][2]<<"\n";
 
 }
+cout<<"files loaded";
 file.close();
     return 0;
   }
