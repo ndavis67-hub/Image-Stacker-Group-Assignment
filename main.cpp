@@ -10,17 +10,21 @@ int main() {
   int f =0;
   int o =0;
   int u =0;
-  int count =0;
+  int count =1;
   
  vector<vector<int>> vector1 ;
 //l pixel number 
 cout<<"enter file name"<<endl;
 string filename ="";
 cin>>filename;
-while(count < 10){
+while(count <= 10){
   
   int pnum =0;
   fstream file(filename + "_00"+ to_string(count) +".ppm");
+  if(!file.is_open()){
+    cout<<"file not good "<<filename<<"_00"<<count<<".ppm"<<endl;
+    return 1;
+  }
 // dont forget 
   string garbage;
   getline(file, garbage);
@@ -30,12 +34,12 @@ while(count < 10){
   
 //run something to remove the first 1 ,2 ,3 line of file input ie P3 591 600 255
   while(file>>f>>o>>u){
-    if(count == 0){
+    if(vector1.empty()){
       vector1.push_back({f, o, u });
     }
     else {
       if(pnum>=vector1.size()){
-        cout<<"warning pixel inconistent"<<pnum;
+        cout<<"warning pixel inconistent"<<pnum<<" "<<filename<<" "<<count;
         return 1;
       }
       vector1[pnum][0] +=f;
