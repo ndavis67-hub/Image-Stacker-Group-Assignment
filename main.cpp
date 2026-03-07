@@ -11,7 +11,7 @@ int main() {
   int o =0;
   int u =0;
   int count =0;
-  int l =0;
+  
  vector<vector<vector<int>>> vector1 ;
 //l pixel number 
 cout<<"enter file name"<<endl;
@@ -19,7 +19,7 @@ string filename ="";
 cin>>filename;
 while(count < 10){
   
-
+  int pnum =0;
   fstream file(filename + "00"+ count +".ppm");
 // dont forget 
   string garbage;
@@ -34,18 +34,19 @@ while(count < 10){
       vector1.push_back({{f, o, u }});
     }
     else {
-      vector1[l][0] +=f;
-      vector1[l][1] +=o;
-      vector1[l][2] +=u;
-      l++;
+      vector1[pnum][0] +=f;
+      vector1[pnum][1] +=o;
+      vector1[pnum][2] +=u;
+      
       
     }
-    file.close();
-    count++;
+    pnum++;
     
 }
+ file.close();
+    count++;
 //end of loop
-for(int a = 0; a> vector1.size() a++){
+for(int a = 0; a< vector1.size() a++){
  vector1 =[a][0] /=10;
  vector1 =[a][1] /=10;
  vector1 =[a][2] /=10;
