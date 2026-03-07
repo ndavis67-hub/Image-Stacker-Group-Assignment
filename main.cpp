@@ -11,16 +11,22 @@ int main() {
   int o =0;
   int u =0;
   int count =1;
-  
- vector<vector<int>> vector1 ;
+  int finalpix =591 * 600;
+ vector<vector<int>> vector1(finalpix, {0, 0, 0}) ;
 //l pixel number 
 cout<<"enter file name"<<endl;
 string filename ="";
 cin>>filename;
 while(count <= 10){
-  
+  fstream file ;
   int pnum =0;
-  fstream file(filename + "_00"+ to_string(count) +".ppm");
+  if(count != 10){
+  file.open(filename + "_00"+ to_string(count) +".ppm");
+  }
+  else if(count == 10) {
+  file.open(filename + "_010"+".ppm"); 
+}
+
   if(!file.is_open()){
     cout<<"file not good "<<filename<<"_00"<<count<<".ppm"<<endl;
     return 1;
@@ -34,10 +40,6 @@ while(count <= 10){
   
 //run something to remove the first 1 ,2 ,3 line of file input ie P3 591 600 255
   while(file>>f>>o>>u){
-    if(vector1.empty()){
-      vector1.push_back({f, o, u });
-    }
-    else {
       if(pnum>=vector1.size()){
         cout<<"warning pixel inconistent"<<pnum<<" "<<filename<<" "<<count;
         return 1;
@@ -46,13 +48,15 @@ while(count <= 10){
       vector1[pnum][1] +=o;
       vector1[pnum][2] +=u;
       
-      
-    }
-    pnum++;
+      pnum++;
+     
+    
     
 }
  file.close();
     count++;
+    
+
 //end of loop
 }
  for(int a = 0; a< vector1.size(); a++){
@@ -76,3 +80,4 @@ for(int b =0; b<vector1.size(); b++){
 file.close();
     return 0;
   }
+
